@@ -1,50 +1,31 @@
-import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
-import icon from '../../assets/icon.svg';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 
-const Hello = () => {
+import MusicLayout from './layouts';
+import Login from './pages/Login';
+import Home from './pages/Home';
+import Role from './pages/Role';
+
+const Layout = () => {
   return (
-    <div>
-      <div className="Hello">
-        <img width="200px" alt="icon" src={icon} />
-      </div>
-      <h1>electron-react-boilerplate</h1>
-      <div className="Hello">
-        <a
-          href="https://electron-react-boilerplate.js.org/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="books">
-              📚
-            </span>
-            Read our docs
-          </button>
-        </a>
-        <a
-          href="https://github.com/sponsors/electron-react-boilerplate"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="books">
-              🙏
-            </span>
-            Donate
-          </button>
-        </a>
-      </div>
-    </div>
+    <MusicLayout>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </MusicLayout>
   );
 };
 
-export default function App() {
+const App = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Hello />} />
+        <Route path="/" element={<Layout />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/role" element={<Role />} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
-}
+};
+
+export default App;

@@ -58,7 +58,7 @@ const installExtensions = async () => {
 
 const createWindow = async () => {
   if (isDevelopment) {
-    await installExtensions();
+    // await installExtensions();
   }
 
   const RESOURCES_PATH = app.isPackaged
@@ -71,8 +71,8 @@ const createWindow = async () => {
 
   mainWindow = new BrowserWindow({
     show: false,
-    width: 1024,
-    height: 728,
+    width: 360,
+    height: 560,
     icon: getAssetPath('icon.png'),
     webPreferences: {
       preload: app.isPackaged
@@ -81,7 +81,9 @@ const createWindow = async () => {
     },
   });
 
-  mainWindow.loadURL(resolveHtmlPath('index.html'));
+  // mainWindow.loadURL(resolveHtmlPath('index.html/login'));
+  // mainWindow.loadURL(resolveHtmlPath('/login'));
+  mainWindow.loadURL(resolveHtmlPath('/role'));
 
   mainWindow.on('ready-to-show', () => {
     if (!mainWindow) {
